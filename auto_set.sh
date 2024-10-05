@@ -16,17 +16,17 @@ if [[ -n "$FILE_KERNEL_VERSION" ]]; then
         echo "$WINDOWS_DEVICE"
 
         # Set the default boot entry to the Windows device.
-        sudo grub2-set-default "$WINDOWS_DEVICE"
-        sudo grub2-set-default
+        echo $(sudo grub2-set-default "$WINDOWS_DEVICE")
+        echo $(sudo grub2-mkconfig -o /boot/grub2/grub.cfg)
     else
         # If the kernel version has not changed, print a message.
         echo "No changes are necessary to the grub file."
     fi
-else
-    # If the file does not exist, create it and write the kernel version for next check.
-    echo "create 'kernel_version.txt' file..."
-    printf "%s\n" $KERNEL_VERSION > kernel_version.txt
 fi
+
+# Create or edit kernel.txt to check the kernel version for later setting of the default GRUB entry.
+echo "create or edit 'kernel_version.txt' file..."
+printf "%s\n" $KERNEL_VERSION > kernel_version.txt
 
 # End script.
 echo "done script."
