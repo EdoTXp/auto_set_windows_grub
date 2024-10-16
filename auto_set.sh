@@ -33,3 +33,4 @@ printf "%s\n" $KERNEL_VERSION > "$HOME/kernel_version.txt"
 
 # End script.
 echo "done script."
+exit 0
