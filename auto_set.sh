@@ -26,8 +26,8 @@ fi
 
 # Set Windows as the default boot option
 echo "Setting Windows as the default boot option in GRUB..."
-sudo grub2-set-default "$WINDOWS_DEVICE"
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+echo $(sudo grub2-set-default "$WINDOWS_DEVICE")
+echo $(sudo grub2-mkconfig -o /boot/grub2/grub.cfg)
 
 # End of script
 echo "Script completed."
