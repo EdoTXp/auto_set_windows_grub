@@ -18,7 +18,7 @@ DEFAULT_ENTRY=$(sudo grub2-editenv list | awk -F= '/saved_entry/ {print $2}')
 echo "Default Entry: $DEFAULT_ENTRY"
 
 # Exit if Windows is already the default
-if [[ "$DEFAULT_ENTRY" == "$WINDOWS_ENTRY" ]]; then
+if [ "$DEFAULT_ENTRY" = "$WINDOWS_ENTRY" ]; then
     echo "Windows is already set as the default boot option in GRUB."
     echo "Script completed."
     exit 0
